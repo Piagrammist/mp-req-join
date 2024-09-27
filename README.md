@@ -14,7 +14,7 @@
     composer install
     ```
 
-- Rename the [`config.example.php`](config.example.php) file to [`config.php`](config.php), and place your credentials there.
+- Rename the [`config.example.php`](config.example.php) file to `config.php`, and place your credentials there.
 
 - Execute the entry point:
 
