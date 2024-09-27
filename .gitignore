@@ -1,0 +1,13 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+.DS_Store
+
+vendor/
+*.phar
+test.php
+
+/session/
+/config.php
+/index.dev.php
