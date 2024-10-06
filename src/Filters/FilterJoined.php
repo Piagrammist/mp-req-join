@@ -20,6 +20,7 @@ final class FilterJoined extends Filter
 
     public function initialize(EventHandler $API): Filter
     {
+        // * Can't evaluate the plugin itself here, since it'll be `null`.
         $this->API = $API;
         return $this;
     }
@@ -32,6 +33,6 @@ final class FilterJoined extends Filter
         } elseif ($update instanceof ButtonQuery || $update instanceof InlineQuery) {
             $userId = $update->userId;
         }
-        return isset($userId) ? $this->plugin->getUserStatus($userId) : false;
+        return isset($userId) ? (bool)$this->plugin->getUserStatus($userId) : false;
     }
 }
