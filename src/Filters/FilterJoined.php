@@ -13,6 +13,7 @@ use danog\MadelineProto\EventHandler\Filter\Filter;
 #[Attribute(Attribute::TARGET_METHOD)]
 final class FilterJoined extends Filter
 {
+    private $plugin = null;
     private EventHandler $API;
 
     public function initialize(EventHandler $API): Filter
@@ -23,7 +24,8 @@ final class FilterJoined extends Filter
 
     public function apply(Update $update): bool
     {
+        $this->plugin ??= $this->API->getPlugin(MemberHandlerPlugin::class);
         return $update instanceof Message &&
-            $this->API->getPlugin(MemberHandlerPlugin::class)->getUserStatus($update->senderId);
+            $this->plugin->getUserStatus($update->senderId);
     }
 }
